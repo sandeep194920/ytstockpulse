@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# Next.js
+.next/
+out/
+build/
+
+# Environment
+.env
+.env.local
+.env*.local
+
+# Python
+venv/
+.venv/
+*.egg-info/
+
+# Misc
+.DS_Store
+*.log
+.vercel
+
+# Editor
+.vscode/
+.idea/
