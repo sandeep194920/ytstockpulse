@@ -42,9 +42,13 @@ def insert_mentions(
     classified: list[dict],
 ) -> int:
     """
-    classified: output of classify_mentions.classify_transcript()
+    classified: output of classify_mentions.classify_transcript() or classify_with_timestamps()
     Returns count of rows successfully inserted (excludes duplicates skipped
     by the unique constraint).
+
+    Each item may include:
+      - ticker, stance, reasoning (required)
+      - timestamp_seconds (optional int — from classify_with_timestamps)
     """
     inserted = 0
     for item in classified:
@@ -58,17 +62,22 @@ def insert_mentions(
 
         ensure_stock_exists(ticker)
 
+        row = {
+            "stock_ticker": ticker,
+            "youtuber_id": youtuber_id,
+            "video_id": video_id,
+            "video_url": video_url,
+            "mentioned_at": mentioned_at,
+            "stance": stance,
+            "reasoning": reasoning,
+            "price_at_call": item.get("price_at_call"),  # set by classify_mentions via Alpha Vantage
+            "video_timestamp_seconds": item.get("timestamp_seconds"),  # None if not extracted
+        }
+
         try:
-            supabase.table("mentions").insert({
-                "stock_ticker": ticker,
-                "youtuber_id": youtuber_id,
-                "video_id": video_id,
-                "video_url": video_url,
-                "mentioned_at": mentioned_at,
-                "stance": stance,
-                "reasoning": reasoning,
-            }).execute()
+            supabase.table("mentions").insert(row).execute()
             inserted += 1
+            print(f"[merge_mentions] Inserted: {ticker} / {stance} / price_at_call={item.get('price_at_call')}")
         except Exception as e:
             # Likely a duplicate (unique constraint violation) from a re-run —
             # this is expected and safe to skip, not a real error.

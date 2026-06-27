@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Light mode ─────────────────────────────────────────── */
+:root {
+  --color-parchment:        #F7F4EE;
+  --color-parchment-card:   #FDFCF8;
+  --color-parchment-hover:  #EFEAE0;
+  --color-parchment-border: #DDD5C4;
+  --color-parchment-muted:  #EDE9E0;
+  --color-parchment-deep:   #F2EEE4;
+
+  --color-ink:        #1F1B16;
+  --color-ink-mid:    #3D3830;
+  --color-ink-muted:  #5C5546;
+  --color-ink-faint:  #7A7264;
+  --color-ink-border: #C4BBA8;
+
+  --color-buy:        #3F7D58;
+  --color-buy-bg:     #E4F1E9;
+  --color-hold:       #A07A2E;
+  --color-hold-bg:    #FAF0DC;
+  --color-sell:       #B04A3F;
+  --color-sell-bg:    #F5E7E5;
+  --color-heating:    #B05C44;
+  --color-heating-bg: #F5E6DF;
+  --color-cooling:    #4A6E8E;
+  --color-cooling-bg: #E5EDF4;
+
+  --color-warn:       #92620A;
+  --color-warn-bg:    #FEF9EE;
+  --color-warn-border:#F0D890;
+  --color-input-bg:   #FDFCF8;
+}
+
+/* ── Dark mode — warm near-black ────────────────────────── */
+.dark {
+  --color-parchment:        #13120F;
+  --color-parchment-card:   #1C1A16;
+  --color-parchment-hover:  #232018;
+  --color-parchment-border: #2E2A22;
+  --color-parchment-muted:  #201E18;
+  --color-parchment-deep:   #171510;
+
+  --color-ink:        #F0EDE6;
+  --color-ink-mid:    #D8D3CA;
+  --color-ink-muted:  #A8A298;
+  --color-ink-faint:  #7A756C;
+  --color-ink-border: #3A3630;
+
+  --color-buy:        #3EC99A;
+  --color-buy-bg:     #0C2620;
+  --color-hold:       #D4A94C;
+  --color-hold-bg:    #221A08;
+  --color-sell:       #E06070;
+  --color-sell-bg:    #2A1018;
+  --color-heating:    #E07858;
+  --color-heating-bg: #261510;
+  --color-cooling:    #5898C8;
+  --color-cooling-bg: #0E1E2C;
+
+  --color-warn:       #D4A94C;
+  --color-warn-bg:    #1E1A08;
+  --color-warn-border:#302610;
+  --color-input-bg:   #171510;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: var(--color-parchment);
+    color: var(--color-ink);
+    font-size: 14px;
+    line-height: 1.6;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-parchment-border);
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(16px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+}

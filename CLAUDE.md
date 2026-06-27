@@ -212,3 +212,9 @@ The `submit/page.tsx` form lets anyone (including channel creators themselves) s
 - Cost projections (see `docs/cost-projections.md`): roughly $5-30/month at pilot scale (10-30 channels), staying under ~$60-100/month even at 100+ channels, because Claude Haiku batch pricing and free-tier YouTube/Supabase quotas cover this comfortably. The cost curve that actually matters is per-user features later, not channel-scraping volume.
 - SEO strategy (see `docs/seo-strategy.md`): the homepage/domain name is not the primary organic traffic driver — individual, SSR'd, daily-fresh ticker pages (`/stock/nvda`, `/stock/oklo`) are. Prioritize making those pages fast, crawlable, and genuinely updated daily over any cleverness at the domain-root level.
 - UI copy convention: "sell" stance is labeled **"Overpriced"** in the UI, not "Sell" — reads more like authentic YouTuber vocabulary, less like a formal trading signal.
+
+## Learning Docs
+
+`learning/` contains human-readable docs explaining how the system works, why decisions were made, and what to know when coming back after time away. Start with `learning/START.md`.
+
+**AI assistant instruction:** After completing any significant new feature, pipeline change, or architectural decision, proactively suggest updating or adding a doc in `learning/`. Examples of things that warrant a doc: a new script added to the pipeline, a new table or migration, a new Claude prompt, a new UI feature with non-obvious logic, a gotcha discovered during development. Don't wait to be asked — suggest it as part of wrapping up the task.

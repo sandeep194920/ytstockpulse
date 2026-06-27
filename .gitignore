@@ -18,6 +18,10 @@ venv/
 .venv/
 *.egg-info/
 
+# Pipeline state
+scripts/fetch_progress.json
+scripts/youtube-cookies.txt
+
 # Misc
 .DS_Store
 *.log

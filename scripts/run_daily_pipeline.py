@@ -20,9 +20,10 @@ Usage:
 """
 
 import sys
+import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "..", ".env.local"))
 
 from extract_transcript import get_transcript
 from classify_mentions import classify_transcript
